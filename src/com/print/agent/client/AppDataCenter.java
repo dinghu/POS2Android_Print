@@ -291,6 +291,10 @@ public class AppDataCenter {
 	public static void setMaskedPAN(String pan) {
 		AppDataCenter.__MASKEDPAN = pan;
 	}
+	
+	public static String getMaskedPAN(){
+		return AppDataCenter.__MASKEDPAN;
+	}
 
 	public static String getTransferName(String transferCode) {
 		if (transferNameMap.size() > 0) {

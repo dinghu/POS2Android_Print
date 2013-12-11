@@ -75,8 +75,6 @@ public class AiShuaService extends Service {
 		++execCount;
 
 		try {
-			CommandReturn cmdReturn = null;
-
 			String[] fsks = fskCommand.split("#");
 			for (String aFsk : fsks) {
 				final String[] fields = aFsk.split("\\|");
@@ -90,6 +88,7 @@ public class AiShuaService extends Service {
 						
 					} else if (methodName.equalsIgnoreCase("swipeCard")) {
 						aishuaCommandController.startCSwiper();
+						
 					}
 
 				} else {
@@ -102,12 +101,6 @@ public class AiShuaService extends Service {
 
 			BaseActivity.getTopActivity().hideDialog(BaseActivity.PROGRESS_DIALOG);
 
-			Message message = new Message();
-			message.what = 0; // 肯定是成功的
-			message.obj = cmdReturn;
-			message.setTarget(FSKOperator.fskHandler);
-			message.sendToTarget();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (execCount < MAX_EXECCOUNT) {
@@ -119,32 +112,6 @@ public class AiShuaService extends Service {
 		} finally {
 			execCount = 0;
 		}
-	}
-
-	private Object[] parseArgs(String args) {
-		if (null == args || args.trim().equals("") || args.trim().equals("null"))
-			return null;
-
-		String[] argArray = args.split(",");
-		Object[] argsObject = new Object[argArray.length];
-
-		int i = 0;
-		for (String arg : argArray) {
-			String[] temp = arg.split(":");
-
-			if (temp[1].trim().startsWith("__"))
-				temp[1] = AppDataCenter.getValue(temp[1]);
-
-			if ("int".equalsIgnoreCase(temp[0]) || "integer".equalsIgnoreCase(temp[0])) {
-				argsObject[i++] = Integer.valueOf(temp[1]);
-			} else if ("string".equalsIgnoreCase(temp[0])) {
-				argsObject[i++] = temp[1];
-			} else if ("bool".equalsIgnoreCase(temp[0]) || "boolean".equalsIgnoreCase(temp[0])) {
-				argsObject[i++] = Boolean.valueOf(temp[1]); // must be "true" is
-															// true
-			}
-		}
-		return argsObject;
 	}
 
 }

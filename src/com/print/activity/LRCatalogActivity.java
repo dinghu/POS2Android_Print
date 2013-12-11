@@ -163,6 +163,14 @@ public class LRCatalogActivity extends BaseActivity implements OnItemClickListen
     			
     			currentCatalog = currentCatalogList.get(arg2);
     			
+    			if (Constant.isAISHUA){
+    				if (currentCatalog.getCatalogId() == 21 || currentCatalog.getCatalogId() == 31){
+    					this.catalogAction();
+    				}
+    				
+    				return;
+    			}
+    			
     			// 先判断该交易是否已经开通
     			if (!currentCatalog.isActive()){
     				Toast.makeText(LRCatalogActivity.this, currentCatalog.getTitle()+"尚未开通，敬请期待", Toast.LENGTH_SHORT).show();
@@ -549,7 +557,12 @@ public class LRCatalogActivity extends BaseActivity implements OnItemClickListen
 		InputStream inputStream = null;
 		try{
 	        CatalogModel catalog = null;  
-	        inputStream = AssetsUtil.getInputStreamFromPhone("catalog.xml");
+	        if (Constant.isAISHUA){
+	        	inputStream = AssetsUtil.getInputStreamFromPhone("catalog_aishua.xml");
+	        } else {
+	        	inputStream = AssetsUtil.getInputStreamFromPhone("catalog.xml");
+	        }
+	        
 	        XmlPullParser parser = Xml.newPullParser();  
 	        parser.setInput(inputStream, "UTF-8");  
 	          

@@ -1,21 +1,23 @@
 package com.print.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.print.R;
-import com.print.activity.view.PasswordWithLabelView;
+import com.print.agent.client.AppDataCenter;
 
-public class JFBalancePwdActivity extends BaseActivity implements OnClickListener {
-	private PasswordWithLabelView et_pwd = null;
+public class ASBalanceSuccessActivity extends BaseActivity implements OnClickListener {
+	
+	private TextView tv_balance = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_jfpal_balance_pwd);
+		setContentView(R.layout.activity_aishua_balance_success);
 
 		this.findViewById(R.id.topInfoView);
 
@@ -24,28 +26,34 @@ public class JFBalancePwdActivity extends BaseActivity implements OnClickListene
 		Button btn_confirm = (Button) this.findViewById(R.id.btn_confirm);
 		btn_confirm.setOnClickListener(this);
 		
-		et_pwd = (PasswordWithLabelView)this.findViewById(R.id.et_pwd);
-		et_pwd.setHintWithLabel("密码", "请输入密码");
-
+		tv_balance = (TextView) this.findViewById(R.id.tv_balance);
+		
+		int type = this.getIntent().getIntExtra("TYPE", 1);
+		
+		if (type == 1) {
+			tv_balance.setText("卡号：" + AppDataCenter.getMaskedPAN() + "\n\n余额：100.00");
+		} else {
+			tv_balance.setText("交易成功");
+		}
 
 	}
 
 	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
+	public void onClick(View arg0) {
+		switch (arg0.getId()) {
 		case R.id.backButton:
 			this.finish();
-			
 			break;
 		case R.id.btn_confirm:
-			Intent intent = new Intent(JFBalancePwdActivity.this, JFBalanceSuccessActivity.class);
-			JFBalancePwdActivity.this.startActivity(intent);
+			this.setResult(RESULT_OK);
+			this.finish();
 			
 			break;
 
 		default:
 			break;
 		}
-		
+
 	}
+
 }

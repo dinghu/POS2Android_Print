@@ -12,6 +12,7 @@ import com.print.R;
 import com.print.agent.client.TransferLogic;
 import com.print.fsk.CommandControllerEx;
 import com.print.fsk.FSKService;
+import com.print.fsk.FSKStateChangeListener;
 import com.print.util.StringUtil;
 
 /**
@@ -93,7 +94,8 @@ public class ShowBalanceActivity extends BaseActivity implements OnClickListener
 		protected Object doInBackground(Object... arg0) {
 			try{
 				// 不触发等待用户操作的监听，否则体验不是很好。
-				final CommandControllerEx commandController = new CommandControllerEx(ShowBalanceActivity.this, null);
+				FSKStateChangeListener listener = new FSKStateChangeListener();
+				final CommandControllerEx commandController = new CommandControllerEx(ShowBalanceActivity.this, listener);
 				commandController.Init(FSKService.check_key);
 				commandController.Cmd_Display((String)arg0[0], 20);
 				

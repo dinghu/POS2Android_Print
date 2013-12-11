@@ -150,13 +150,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Text
 			break;
 			
 		case R.id.registerButton:
-//			register();
-//			this.passwordET.setText("");
-//			this.securiteCodeET.setText("");
-			
-			//即付宝测试
-			Intent intent_jf = new Intent(LoginActivity.this, JFBalancePwdActivity.class);
-			LoginActivity.this.startActivity(intent_jf);
+			register();
+			this.passwordET.setText("");
+			this.securiteCodeET.setText("");
 			
 			break;
 			
@@ -309,7 +305,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Text
 			Constant.isAISHUA = !Constant.isAISHUA;
 			Constant.isStatic = true;
 			
-			Toast.makeText(this, "已切换到" + (Constant.isAISHUA?"爱刷演示环境":"点付宝"), Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "已切换到" + (Constant.isAISHUA?"爱刷演示环境":"点付宝环境"), Toast.LENGTH_SHORT).show();
 			
 		} else if (editAble.toString().equals("40053155315")){
 			Constant.isStatic = !Constant.isStatic;
@@ -362,8 +358,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Text
 		protected void onPostExecute(Object obj) {
 			try{
 				Event event = new Event(null,"login", null);
-		        String fskStr = "Get_VendorTerID|null#Get_PsamNo|null";
-		        event.setFsk(fskStr);
+		        if (!Constant.isAISHUA){
+		        	String fskStr = "Get_VendorTerID|null#Get_PsamNo|null";
+			        event.setFsk(fskStr);
+		        }
 		        event.setTransfer("100005");
 		        HashMap<String, String> map = new HashMap<String, String>();
 		        map.put("captcha", securiteCodeET.getText().toString());

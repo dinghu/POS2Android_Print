@@ -124,10 +124,11 @@ public class CommandControllerEx extends CommandController {
 		try {
 			return super.Cmd_Display(displayInfo.getBytes("GBK"), timer);
 			
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			return super.Cmd_Display(displayInfo.getBytes(), timer);
 		}
+		
+		return new CommandReturn();
 	}
 
 	public CommandReturn Get_RenewKey(String PINkey, String MACkey, String DESkey) {

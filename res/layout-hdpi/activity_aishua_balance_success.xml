@@ -74,13 +74,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="余额："
-                    style="@style/TextView18_1sp" />
+                    style="@style/TextView18_1sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$18000：" 
+                    android:text="18000" 
                     android:layout_marginLeft="8dip"
                     style="@style/TextView18_1sp"/>
             </LinearLayout>

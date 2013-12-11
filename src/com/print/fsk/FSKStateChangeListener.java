@@ -70,7 +70,7 @@ public class FSKStateChangeListener implements CommandStateChangedListener {
 		Log.e("状态监听", "等待用户操作");
 		
 		// 现在已知余额查询时竟然也会触发。
-		BaseActivity.getTopActivity().showDialog(BaseActivity.PROGRESS_DIALOG, "用户输入完成后请按[确认]键");
+		//BaseActivity.getTopActivity().showDialog(BaseActivity.PROGRESS_DIALOG, "用户输入完成后请按[确认]键");
 	}
 
 	@Override

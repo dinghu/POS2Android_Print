@@ -147,7 +147,11 @@ public class BaseActivity extends Activity {
 		this.runOnUiThread(new Runnable(){
 			@Override
 			public void run() {
-				showDialog(type);
+				try {
+					showDialog(type);
+				} catch(Exception e){
+					e.printStackTrace();
+				}
 			}
 		});
 	}

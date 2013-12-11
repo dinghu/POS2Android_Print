@@ -1,5 +1,6 @@
 package com.print.fsk;
 
+import android.os.Message;
 import android.util.Log;
 
 import com.itron.cswiper4.CSwiper;
@@ -19,6 +20,7 @@ public class AiShuaStateChangedListener implements CSwiperStateChangedListener {
 	@Override
 	public void onCardSwipeDetected() {
 		Log.e("状态监听", "用户已刷卡");
+		BaseActivity.getTopActivity().showDialog(BaseActivity.PROGRESS_DIALOG, "请稍候...");
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class AiShuaStateChangedListener implements CSwiperStateChangedListener {
 	@Override
 	public void onWaitingForCardSwipe() {
 		Log.e("状态监听",  "请刷卡");
-		BaseActivity.getTopActivity().showDialog(BaseActivity.PROGRESS_DIALOG, "请刷卡");
+		BaseActivity.getTopActivity().showDialog(BaseActivity.PROGRESS_DIALOG, "请用户刷卡");
 	}
 
 	@Override
@@ -59,13 +61,13 @@ public class AiShuaStateChangedListener implements CSwiperStateChangedListener {
 	@Override
 	public void onDevicePlugged() {
 		Log.e("状态监听", "刷卡器插入手机");
-		BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "刷卡器插入手机");
+		//BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "刷卡器插入手机");
 	}
 
 	@Override
 	public void onDeviceUnplugged() {
 		Log.e("状态监听",  "刷卡器拔出");
-		BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "刷卡器拔出");
+//		BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "刷卡器拔出");
 	}
 
 	@Override
@@ -91,32 +93,49 @@ public class AiShuaStateChangedListener implements CSwiperStateChangedListener {
 		AppDataCenter.setEncTrack(encTracks);
 		AppDataCenter.setRandom(randomNumber);
 		AppDataCenter.setMaskedPAN(maskedPAN);
+		
+		Message message = new Message();
+		message.what = 0; // 肯定是成功的
+		message.setTarget(FSKOperator.fskHandler);
+		message.sendToTarget();
 	}
 
 	@Override
 	public void onError(int errcode, String paramString) {
-		Log.e("状态监听",  paramString);
+		Log.e("--状态监听--",  paramString);
+		BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, paramString);
 	}
 
 	@Override
 	public void onDecodeError(DecodeResult paramDecodeResult) {
 		if(paramDecodeResult != DecodeResult.DECODE_SWIPE_FAIL){
-			controller.stopCSwiper();
+			Log.e("状态监听", "DECODE_SWIPE_FAIL");
+			try{
+				controller.stopCSwiper();
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			return;
 		}
 		
 		if (paramDecodeResult == DecodeResult.DECODE_SWIPE_FAIL) {
+			Log.e("状态监听", "刷卡失败");
 			BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "刷卡失败");
 		}
 		
 		if (paramDecodeResult == DecodeResult.DECODE_CRC_ERROR) {
+			Log.e("状态监听", "校验和错误");
 			BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "校验和错误");
 		}
 		
 		if (paramDecodeResult == DecodeResult.DECODE_UNKNOWN_ERROR) {
+			Log.e("状态监听", "未知错误");
 			BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "未知错误");
 		}
 		
 		if (paramDecodeResult == DecodeResult.DECODE_COMM_ERROR) {
+			Log.e("状态监听", "通讯错误");
 			BaseActivity.getTopActivity().showDialog(BaseActivity.NONMODAL_DIALOG, "通讯错误");
 		}
 	}

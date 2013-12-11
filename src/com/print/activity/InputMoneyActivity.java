@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -146,6 +147,13 @@ public class InputMoneyActivity extends BaseActivity implements OnClickListener 
 	}
 	
 	private void pressSubmitButton(){
+		if (Constant.isAISHUA){
+			Intent intent = new Intent(this, ASBalancePwd2Activity.class);
+			this.startActivityForResult(intent, 0);
+			
+			return;
+		}
+		
 		// 因为在这里有可能交易后验证服务器响应数据时点付宝发生异常，这时应该检查冲正。
 		if (TransferLogic.getInstance().reversalAction()){
 			return;
