@@ -58,7 +58,7 @@
 
 
             <com.print.activity.view.PasswordWithLabelView
-                android:id="@+id/againpasswordET"
+                android:id="@+id/et_pwd"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dip"
@@ -70,7 +70,7 @@
         <!-- begin 20121206 xxm update margin属性 -->
 
         <Button
-            android:id="@+id/findpasswordConfirmButton"
+            android:id="@+id/btn_confirm"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -32,7 +32,7 @@ public class JFBalanceSuccessActivity extends BaseActivity implements OnClickLis
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-        setContentView(R.layout.activity_jfpal_balance_pwd);
+        setContentView(R.layout.activity_jfpal_balance_success);
         
         this.findViewById(R.id.topInfoView);
         
