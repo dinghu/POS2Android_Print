@@ -44,7 +44,7 @@ public class FSKThread extends Thread{
 		
 		FSKStateChangeListener listener = new FSKStateChangeListener();
 		commandController = new CommandControllerEx(ApplicationEnvironment.getInstance().getApplication(), listener);
-		commandController.Init(check_key, 1);
+		commandController.Init(check_key);
 		
 		CommandReturn cmdReturn = null;
 		

@@ -34,7 +34,7 @@ public class FSKService extends Service {
 		
 		FSKStateChangeListener listener = new FSKStateChangeListener();
 		commandController = new CommandControllerEx(this, listener);
-		commandController.Init(check_key, 1);
+		commandController.Init(check_key);
 	}
 
 	@Override

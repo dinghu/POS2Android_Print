@@ -1,7 +1,5 @@
 package com.print.agent.client;
 
-import itron.fskcoder.Util;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -15,6 +13,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.itron.android.ftf.Util;
 import com.itron.protol.android.CommandReturn;
 import com.print.util.AssetsUtil;
 import com.print.util.DateUtil;

@@ -1,7 +1,5 @@
 package com.print.agent.client;
 
-import itron.fskcoder.Util;
-
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -18,6 +16,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import com.itron.android.ftf.Util;
 import com.itron.protol.android.CommandReturn;
 import com.print.activity.BaseActivity;
 import com.print.agent.client.db.ReversalDBHelper;

@@ -1,12 +1,11 @@
 package com.print.fsk;
 
-import itron.fskcoder.Util;
-
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 import android.content.Context;
 
+import com.itron.android.ftf.Util;
 import com.itron.protol.android.CommandController;
 import com.itron.protol.android.CommandReturn;
 import com.itron.protol.android.CommandStateChangedListener;

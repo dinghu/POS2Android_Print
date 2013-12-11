@@ -1,7 +1,5 @@
 package com.print.activity.view;
 
-import itron.fskcoder.Util;
-
 import java.math.BigInteger;
 import java.security.KeyFactory;
 import java.security.PublicKey;
@@ -30,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 
+import com.itron.android.ftf.Util;
 import com.print.R;
 import com.print.activity.BaseActivity;
 import com.print.agent.client.ApplicationEnvironment;

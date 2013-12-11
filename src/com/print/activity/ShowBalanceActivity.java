@@ -94,7 +94,7 @@ public class ShowBalanceActivity extends BaseActivity implements OnClickListener
 			try{
 				// 不触发等待用户操作的监听，否则体验不是很好。
 				final CommandControllerEx commandController = new CommandControllerEx(ShowBalanceActivity.this, null);
-				commandController.Init(FSKService.check_key, 1);
+				commandController.Init(FSKService.check_key);
 				commandController.Cmd_Display((String)arg0[0], 20);
 				
 			} catch(Exception e){
