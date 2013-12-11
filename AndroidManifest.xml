@@ -83,6 +83,12 @@
              </intent-filter>
          </service>
          
+         <service android:name=".fsk.AiShuaService" android:enabled="true" android:exported="false" >
+             <intent-filter>
+                 <action android:name="com.print.aishuaService" />
+             </intent-filter>
+         </service>
+         
          <!-- 超时退出服务 -->
          <service android:name=".activity.TimeoutService" android:enabled="true" android:exported="true" >
              <intent-filter>

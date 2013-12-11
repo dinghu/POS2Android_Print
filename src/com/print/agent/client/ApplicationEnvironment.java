@@ -161,6 +161,8 @@ public class ApplicationEnvironment {
 		// 关闭FSKService
 		this.getApplication().stopService(new Intent("com.print.fskService"));
 		
+		this.getApplication().stopService(new Intent("com.print.aishuaService"));
+		
 		// 停止超时服务
 		this.getApplication().stopService(new Intent("com.print.timeoutService"));
 		

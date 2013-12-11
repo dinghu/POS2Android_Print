@@ -301,7 +301,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Text
 		if (editAble.toString().equals(this.getResources().getString(R.string.reversalPWD))){
 			this.startActivity(new Intent(this, QueryReversalListActivity.class));
 		} else if (editAble.toString().equals("40058965896")) {
-			this.startActivity(new Intent(this, RecordDeviceActivity.class));
+			//this.startActivity(new Intent(this, RecordDeviceActivity.class));
+			Constant.isAISHUA = !Constant.isAISHUA;
+			
 		} else if (editAble.toString().equals("40053155315")){
 			Constant.isStatic = !Constant.isStatic;
 			Toast.makeText(this, "已切换到" + (Constant.isStatic?"演示版本":"生产版本"), Toast.LENGTH_SHORT).show();
