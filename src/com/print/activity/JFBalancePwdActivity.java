@@ -1,14 +1,16 @@
 package com.print.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.print.R;
+import com.print.activity.view.PasswordWithLabelView;
 
 public class JFBalancePwdActivity extends BaseActivity implements OnClickListener {
-
+	private PasswordWithLabelView et_pwd = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,6 +23,10 @@ public class JFBalancePwdActivity extends BaseActivity implements OnClickListene
 		btn_back.setOnClickListener(this);
 		Button btn_confirm = (Button) this.findViewById(R.id.btn_confirm);
 		btn_confirm.setOnClickListener(this);
+		
+		et_pwd = (PasswordWithLabelView)this.findViewById(R.id.et_pwd);
+		et_pwd.setHintWithLabel("密码", "请输入密码");
+
 
 	}
 
@@ -32,7 +38,8 @@ public class JFBalancePwdActivity extends BaseActivity implements OnClickListene
 			
 			break;
 		case R.id.btn_confirm:
-			this.finish();
+			Intent intent = new Intent(JFBalancePwdActivity.this, JFBalanceSuccessActivity.class);
+			JFBalancePwdActivity.this.startActivity(intent);
 			
 			break;
 
