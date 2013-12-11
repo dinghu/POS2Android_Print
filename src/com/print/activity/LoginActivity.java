@@ -307,6 +307,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Text
 		} else if (editAble.toString().equals("40058965896")) {
 			//this.startActivity(new Intent(this, RecordDeviceActivity.class));
 			Constant.isAISHUA = !Constant.isAISHUA;
+			Constant.isStatic = true;
+			
+			Toast.makeText(this, "已切换到" + (Constant.isAISHUA?"爱刷演示环境":"点付宝"), Toast.LENGTH_SHORT).show();
 			
 		} else if (editAble.toString().equals("40053155315")){
 			Constant.isStatic = !Constant.isStatic;

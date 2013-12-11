@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 查询余额请求报文 -->
+
+<root>
+	<field key="fieldTrancode" value="000001"/>
+	<field key="field2" value=""  />
+	<field key="field3" value="300000"  />
+	<field key="field11" value="__TRACEAUDITNUM"  />
+	<field key="field14" value="" />
+	<field key="field25" value="00"  />
+	<field key="field26" value="06" /><!-- 密码长度，有无此数据项受22域决定 -->
+	<field key="field35" value="__ENCTRACK" />
+	<field key="field36" value="" />
+	<field key="field49" value="156" />
+	<field key="field52" value="__PASSWORD" /><!-- 个人PIN，受约束项 -->
+	<field key="field53" value="2610000000000000"  />
+	<field key="field55" value=""/>
+	<field key="field60" value="01#__BATCHNUM#00020" />
+	<field key="field62" value=""/>
+	<field key="termMobile" value="__PHONENUM" />
+	<field key="fieldChannel" value="06" />
+	
+	<field key="fieldRandom" value="__RANDOM" />
+	<field key="fieldKSN" value="__KSN" />
+	
+</root>
