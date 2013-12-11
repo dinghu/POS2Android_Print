@@ -150,9 +150,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener, Text
 			break;
 			
 		case R.id.registerButton:
-			register();
-			this.passwordET.setText("");
-			this.securiteCodeET.setText("");
+//			register();
+//			this.passwordET.setText("");
+//			this.securiteCodeET.setText("");
+			
+			//即付宝测试
+			Intent intent_jf = new Intent(LoginActivity.this, JFBalancePwdActivity.class);
+			LoginActivity.this.startActivity(intent_jf);
 			
 			break;
 			
