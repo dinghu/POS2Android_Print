@@ -3,7 +3,7 @@ package com.print.agent.client;
 public class Constant {
 	
 	public static boolean isStatic							= true;
-	public static boolean isAISHUA							= true;
+	public static boolean isAISHUA							= false;
 	
 	
 	public static final String APPFILEPATH 				    = "/data/data/" + ApplicationEnvironment.getInstance().getApplication().getPackageName();
